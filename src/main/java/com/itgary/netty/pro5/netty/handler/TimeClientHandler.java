@@ -1,4 +1,4 @@
-package com.itgary.netty.pro5.netty.netty.handler;
+package com.itgary.netty.pro5.netty.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
