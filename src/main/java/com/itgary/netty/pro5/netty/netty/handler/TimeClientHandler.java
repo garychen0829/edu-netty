@@ -1,4 +1,4 @@
-package com.itgary.netty.pro4.netty.handler;
+package com.itgary.netty.pro5.netty.netty.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -17,6 +17,8 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
 
     private final ByteBuf firstMesg;
     private byte[] req;
+    private int count;
+
     public TimeClientHandler(){
         req = ("QUERY TIME ORDER" + System.getProperty("line.separator")).getBytes();
 
@@ -48,17 +50,12 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
         }
     }
 
-    private int count;
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf buf = (ByteBuf)msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req,"UTF-8");
-
-        System.out.println("OutPut:{}" + body);
-        System.out.println("count :{}" + ++count);
+        String body = (String)msg;
+        System.out.println("Now is :" + body + "; the count is:" + ++count);
 
     }
 
